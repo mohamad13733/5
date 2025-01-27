@@ -1,0 +1,17 @@
+def predict(model, image_path):
+    image = load_img(image_path, target_size=(128, 128))
+    image = img_to_array(image)
+    image = np.expand_dims(image, axis=0) / 255.0
+    
+    prediction = model.predict(image)
+    prediction = (prediction > 0.5).astype(np.uint8)
+    
+    return prediction[0]
+
+# Create U-Net model
+model = unet_model()
+model.summary()
+
+# Load data (enter your dataset directory here)
+data_dir = 'path/to/your/data'
+images, masks = load_data(data_dir)
