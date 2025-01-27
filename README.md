@@ -1,1 +1,2 @@
 # 5
+In this program, I have designed a neural network using the U-Net model that can receive MRI images of women's breasts and perform segmentation of these images. Early and accurate detection of cancerous tumors is very important in cancer treatment and this network can perform accurate diagnosis. I have left the data input fields blank for users of these codes to fill in with your own data. In this program, I have used augmentation to develop the dataset and the program is trained with 30 epochs.
