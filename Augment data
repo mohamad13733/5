@@ -1,0 +1,17 @@
+def augment_data(x_train, y_train, batch_size=32):
+    data_gen_args = dict(rotation_range=10.,
+                         width_shift_range=0.1,
+                         height_shift_range=0.1,
+                         shear_range=0.2,
+                         zoom_range=0.2,
+                         horizontal_flip=True,
+                         fill_mode='nearest')
+    image_datagen = ImageDataGenerator(**data_gen_args)
+    mask_datagen = ImageDataGenerator(**data_gen_args)
+
+    image_generator = image_datagen.flow(x_train, batch_size=batch_size, seed=42)
+    mask_generator = mask_datagen.flow(y_train, batch_size=batch_size, seed=42)
+    
+    train_generator = zip(image_generator, mask_generator)
+    
+    return train_generator
