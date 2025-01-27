@@ -1,0 +1,12 @@
+def load_data(data_dir, img_size=(128, 128)):
+    images = []
+    masks = []
+    for subdir, _, files in os.walk(data_dir):
+        for file in files:
+            if 'mask' in file:
+                mask = load_img(os.path.join(subdir, file), target_size=img_size, color_mode="grayscale")
+                masks.append(img_to_array(mask))
+            else:
+                img = load_img(os.path.join(subdir, file), target_size=img_size)
+                images.append(img_to_array(img))
+    return np.array(images), np.array(masks)
