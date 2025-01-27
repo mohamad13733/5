@@ -1,0 +1,9 @@
+model.fit(train_generator, steps_per_epoch=len(x_train) // 32, validation_data=(x_val, y_val), epochs=30)
+
+# Predict on test data (enter your test image path here)
+test_image_path = 'path/to/your/test_image.jpg'
+result = predict(model, test_image_path)
+
+# Display the result
+plt.imshow(result, cmap='gray')
+plt.show()
